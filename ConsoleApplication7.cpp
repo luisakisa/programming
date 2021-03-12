@@ -7,18 +7,19 @@
 using namespace std;
 
 int size();
-void NewMatr(double**& M, int n, int m);//создание матрицы
-void DelMatr(double**& M, int n, int m);//удаление матрицы
-void PrintMatr(double** M, int n, int m, const char* namematr);//вывод матрицы
-void PrintVect(double* x, int n, const char* namematr);//вывод переменных
+void newMatr(double**& M, int n, int m);//создание матрицы
+void delMatr(double**& M, int n, int m);//удаление матрицы
+void printMatr(double** M, int n, int m, const char* namematr);//вывод матрицы
+void printVect(double* x, int n, const char* namematr);//вывод переменных
 bool minor(double**& M, int n, int m, double &Det);//приведение к ступенчатому виду
 void permutation(double**& M, int n, int m, int k, double &Det);//перестановка строк местами
-bool Solve(double **&M, double *x, int n, int m, double &Det);
+bool solve(double **&M, double *x, int n, int m, double &Det);
 double det(double** M, int n);//Определитель
-void choice(double**& M, int n, int m);
+void choice(double**& M, int n, int m);//Погрешность
 void copy(double**& M, int n, int m, double** M1);//дублируем матрицу
 double check(double** M1, int n, int m, double *x);
 bool reverb(double** A, int n, int m, double &Det, double**& rev);//обратная матрица
+void checkRev(double** M1, double** M2, int n1, int m1, int n2, int m2);
 int main()
 {
 	int n;
@@ -29,27 +30,28 @@ int main()
 	double **A1;
 	double **rev;
 	double *x = new double[n];
-	NewMatr(A, n, m);
+	newMatr(A, n, m);
 	choice(A, n, m);
-	NewMatr(A1, n, m);
+	newMatr(A1, n, m);
 	copy(A, n, m, A1);
-	NewMatr(rev, n, n);
-	PrintMatr(A, n, m, "A");
-	if (Solve(A, x, n, m, Det))
+	newMatr(rev, n, n);
+	printMatr(A, n, m, "A");
+	if (solve(A, x, n, m, Det))
 	{
-		PrintVect(x, n, "x");
+		printVect(x, n, "x");
 		cout << "delta = " << check(A1, n, m, x) << endl << endl;
 	}
-	else cout << "no solution" << endl;
+	else cout << "no single solution" << endl;
 	cout << "det = " << Det * det(A, n) << endl;
 	if (reverb(A1, n, m, Det, rev))
 	{
-		PrintMatr(rev, n, n, "rev");
+		printMatr(rev, n, n, "rev");
+		checkRev(A1, rev, n, m - 1, n, n);
 	}
 	else cout << "no reverse" << endl;
-	DelMatr(A, n, m);
-	DelMatr(A1, n, m);
-	DelMatr(rev, n, n);
+	delMatr(A, n, m);
+	delMatr(A1, n, m);
+	delMatr(rev, n, n);
 	delete[] x;
 	x = NULL;
 	return 0;
@@ -65,19 +67,19 @@ int size()
 	} while (n <= 0 || (n - (int)n));
 	return n;
 }
-void NewMatr(double**& M, int n, int m)
+void newMatr(double**& M, int n, int m)
 {
 	M = new double*[n];
 	for (int i = 0; i < n; i++)
 		M[i] = new double[m];
 }
-void DelMatr(double**& M, int n, int m)
+void delMatr(double**& M, int n, int m)
 {
 	for (int i = 0; i < n; i++)
 		delete[] M[i];
 	delete[] M;
 }
-void PrintMatr(double** M, int n, int m, const char* namematr)
+void printMatr(double** M, int n, int m, const char* namematr)
 {
 	cout << endl << " " << namematr << ":" << endl;
 	for (int i = 0; i < n; i++)
@@ -88,7 +90,7 @@ void PrintMatr(double** M, int n, int m, const char* namematr)
 	}
 	cout << endl;
 }
-void PrintVect(double* x, int n, const char* namematr)
+void printVect(double* x, int n, const char* namematr)
 {
 	cout << endl << " " << namematr << ":" << endl;
 	for (int i = 0; i < n; i++)
@@ -132,7 +134,7 @@ bool minor(double**& M, int n, int m, double &Det)
 	}
 	return true;
 }
-bool Solve(double **&M, double *x, int n, int m, double &Det)
+bool solve(double **&M, double *x, int n, int m, double &Det)
 {
 	double res = 0;
 	if (!minor(M, n, m, Det)) return false;
@@ -240,19 +242,39 @@ bool reverb(double** M, int n, int m, double &Det, double**& rev)
 	for (int i = 0; i < n; i++)
 	{
 		double** buff;
-		NewMatr(buff, n, m);
+		newMatr(buff, n, m);
 		copy(M, n, m, buff);
 		for (int j = 0; j < n; j++)
 		{
 			if (i == j) buff[j][m - 1] = 1;
 			else buff[j][m - 1] = 0;
 		}
-		if (!Solve(buff, x, n, m, Det)) metka = false;
+		if (!solve(buff, x, n, m, Det)) metka = false;
 		for (int j = 0; j < n; j++)
 			rev[j][i] = x[j];
-		DelMatr(buff, n, m);
+		delMatr(buff, n, m);
 	}
 	delete[] x;
 	x = NULL;
 	return metka;
+}
+void checkRev(double** M1, double** M2, int n1, int m1, int n2, int m2) {
+	double** buff;
+	newMatr(buff, n1, m2);
+	double S;
+	if (m1 != n2)
+	{
+		cout << "error" << endl;
+		delMatr(buff, n1, m2);
+	}
+	for (int i = 0; i < n1; i++)
+		for (int j = 0; j < m2; j++)
+		{
+			S = 0;
+			for (int k = 0; k < m1; k++)
+				S += M1[i][k] * M2[k][j];
+			buff[i][j] = S;
+		}
+	printMatr(buff, n1, m2, "check");
+	delMatr(buff, n1, m2);
 }
