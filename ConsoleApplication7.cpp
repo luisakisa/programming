@@ -15,11 +15,11 @@ bool minor(double**& M, int n, int m, double &Det);//приведение к с�
 void permutation(double**& M, int n, int m, int k, double &Det);//перестановка строк местами
 bool solve(double **&M, double *x, int n, int m, double &Det);
 double det(double** M, int n);//Определитель
-void choice(double**& M, int n, int m);//Погрешность
+void choice(double**& M, int n, int m);//выбор матриы
 void copy(double**& M, int n, int m, double** M1);//дублируем матрицу
-double check(double** M1, int n, int m, double *x);
+double check(double** M1, int n, int m, double *x);//Погрешность
 bool reverb(double** A, int n, int m, double &Det, double**& rev);//обратная матрица
-void checkRev(double** M1, double** M2, int n1, int m1, int n2, int m2);
+void checkRev(double** M1, double** M2, int n1, int m1, int n2, int m2);//проверка обратной матрицы
 int main()
 {
 	int n;
