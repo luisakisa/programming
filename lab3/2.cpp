@@ -1,78 +1,83 @@
 ﻿#include <iostream>
-#include <string>
 #include <fstream>
+#include <sstream>
 using namespace std;
-struct product
+struct product_group
 {
 	int quantity;
 	double price;
 };
-struct stock
+struct MyQueue
 {
-	struct node
+	struct Node
 	{
-		product data;
-		node* next;
+		product_group data;
+		Node* next;
 	};
-	node* first = NULL;
+	Node* First = NULL;
 	int count = 0;
 	double full_cost = 0;
+	double full_quantity = 0;
 	double income = 0;
-	bool push(product);
-	bool pop(product&);
-	void info();
+	bool push(product_group);
+	bool pop(product_group&);
+	void Delete(product_group&);
+	void Info();
 };
-bool stock::push(product dt)
+bool MyQueue::push(product_group dt)
 {
-	if (!first)
+	if (!First)
 	{
-		first = new node;
-		first->next = NULL;
-		first->data = dt;
+		First = new Node;
+		First->next = NULL;
+		First->data = dt;
 		count = 1;
 		full_cost += dt.price * dt.quantity;
+		full_quantity += dt.quantity;
 	}
 	else
 	{
-		node *temp;
-		temp = first;
+		Node* temp;
+		temp = First;
 		while (temp->next != NULL) temp = temp->next;
-		temp->next = new node;
+		temp->next = new Node;
 		temp->next->data = dt;
 		temp->next->next = NULL;
 		count++;
 		full_cost += dt.price * dt.quantity;
+		full_quantity += dt.quantity;
 	}
 	return true;
 }
-bool stock::pop(product& dt)
+bool MyQueue::pop(product_group& dt)
 {
-	if (!first) return false;
-	node* temp = first->next;
-	dt = first->data;
-	delete first;
-	first = temp;
+	if (!First) return false;
+	Node* temp = First->next;
+	dt = First->data;
+	delete First;
+	First = temp;
 	count--;
 	return true;
 }
-void stock::info()
+void MyQueue::Info()
 {
-	if (!first) cout << "The warehouse is empty" << endl;
+	if (!First) cout << "warehouse is empty" << endl;
 	else
 	{
-		cout << endl << "Info: " << endl;
-		cout << "\tNumber of products group = " << count << endl;
-		cout << "\tFirst quantity = " << first->data.quantity << endl;
-		cout << "\tFirst price = " << first->data.price << endl << endl;
+		cout << endl << "Info " << endl;
+		cout << "\tNumbers of products group = " << count << endl;
+		cout << "\tFirst quantity = " << First->data.quantity << endl;
+		cout << "\tFirst price = " << First->data.price <<  endl;
+		cout << "\tNumbers of products = " << full_quantity << endl;
 	}
 }
-bool check(stock Q, product dt_x)
+bool check(MyQueue Q, product_group dt_x)
 {
-	product dt;
-	stock::node *a;
-	a = Q.first;
+	product_group dt;
+	MyQueue::Node* a;
+	a = Q.First;
 	int k = 0;
-	while (a->data.price <= dt_x.price & k != Q.count)
+	while (a->data.price <= dt_x.price & k != Q.count & dt_x.quantity <= Q.full_quantity)
 	{
 		dt.price = a->data.price;
 		dt.quantity = a->data.quantity;
@@ -102,22 +107,26 @@ bool check(stock Q, product dt_x)
 }
 int main()
 {
-	stock Q;
-
-	product dt_x;
-	product dt, dt1 = { 5,20.5 }, dt2 = { 10,15.5 };
-
-
-	Q.push(dt1);
-	Q.push(dt2);
+	MyQueue Q;
+	product_group dt;
+	product_group dt_x;
+	ifstream file("prod.txt");
+	string line;
+	while (getline(file, line))
+	{
+		istringstream line_F(line);
+		line_F >> dt.quantity >> dt.price;
+		Q.push(dt);
+	}
+	file.close();
 	int m = 1;
 	while (m)
 	{
-		Q.info();
-		cout << "1. receipt" << endl;
-		cout << "2. sell" << endl;
-		cout << "3. report" << endl;
-		cout << "0. exit" << endl;
+		Q.Info();
+		cout << "1. Receipt" << endl;
+		cout << "2. Sell" << endl;
+		cout << "3. Report" << endl;
+		cout << "0. Exit" << endl;
 		cin >> m;
 		switch (m)
 		{
@@ -137,7 +146,7 @@ int main()
 			cout << "Enter the price and quantity of the product:" << endl;
 			cout << "Quantity = "; cin >> dt_x.quantity;
 			cout << "Price = "; cin >> dt_x.price;
-			dt = Q.first->data;
+			dt = Q.First->data;
 			if (check(Q, dt_x))
 			{
 				while (dt_x.quantity)
@@ -148,7 +157,7 @@ int main()
 						Q.full_cost -= dt.price * dt_x.quantity;
 						dt.quantity -= dt_x.quantity;
 						dt_x.quantity = 0;
-						Q.first->data.quantity = dt.quantity;
+						Q.First->data.quantity = dt.quantity;
 					}
 					else
 					{
@@ -160,12 +169,12 @@ int main()
 					if (dt.quantity == 0)
 					{
 						Q.pop(dt);
-						dt = Q.first->data;
+						dt = Q.First->data;
 					}
 				}
 				cout << "Completed" << endl;
 			}
-			else cout << "Сannot be done" << endl;
+			else cout << "Was not made :(" << endl;
 			system("pause");
 			system("cls");
 			break;
@@ -173,14 +182,21 @@ int main()
 		case 3:
 		{
 			system("cls");
-			cout << "Count = " << Q.count << endl;
-			cout << "Full cost = " << Q.full_cost << endl;
-			cout << "Income = " << Q.income << endl;
+			cout << "Number of product = " << Q.count << endl;
+			cout << "Product price = " << Q.full_cost << endl;
+			cout << "Income from sale = " << Q.income << endl;
 			system("pause");
 			system("cls");
 			break;
 		}
 		}
 	}
-}
+	Q.Delete(dt);
+	return 0;
 
+}
+void MyQueue::Delete(product_group& G)
+{
+	while (count != 0)
+		pop(G);
+}
