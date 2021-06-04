@@ -14,9 +14,11 @@ void Del(Flower* A)
 void A_Print(Flower* A)
 {
   cout << endl << endl;
+  cout << "____________________" << endl;  
   cout << "Cost: " << A->cost << endl;
   cout << "Color: " << A->color << endl;
   cout << "Quantity: " << A->quantity << endl;
   cout << "Kind: " << A->kind << endl;
+  cout << "____________________" << endl;  
   cout << endl << endl;
 }
