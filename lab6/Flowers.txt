@@ -1,0 +1,3 @@
+yellow 15 tulp 15
+blue 20 rose 5
+
