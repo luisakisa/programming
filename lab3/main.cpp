@@ -32,8 +32,5 @@ int main()
 	for (i = 0; i < 5; i++) {
 		cout << i+1<< ". " << shapes[i]->toString() << endl;
 	}
-	for (i = 0; i < 5; i++) {
-		delete shapes[i];
-	}
 	return 0;
 }
