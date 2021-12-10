@@ -2,34 +2,39 @@
 #define SHAPES_H
 #include <vector>
 #include <string>
+#include <iostream>
 
 using namespace std;
-class Shape
-{
-protected:
-	string name;
-	struct coord {
+struct coord {
 		double x, y;
 		coord(double X, double Y){
 			x = X;
 			y = Y;
 		}
 	};
-	vector<coord> coords;
+class Shape
+{
 public: 
-	Shape();
+	Shape(const std::vector<coord>& newCoords);
 	virtual ~Shape(){};
 	virtual double Area() =0;
 	virtual string toString();
 	void Draw();
 	void Move(double x, double y);
+	vector<coord> getCoords();
+	coord getPosition();
+
+protected:
+	string name;
+	
+	vector<coord> coords;
 };
 class Rectangle : public Shape
 {
 public:
 	double a, b;
 	virtual double Area();
-	Rectangle() {
+	Rectangle(const vector<coord>& newCoords) : Shape(newCoords) {
 		a = coords[1].x - coords[0].x;
 		b = coords[2].y - coords[0].y;
 		name = "Rectangle";
@@ -40,21 +45,21 @@ class Square : public Rectangle
 {
 public:
 	virtual double Area();
-	Square() {
+	Square(const vector<coord>& newCoords) : Rectangle(newCoords) {
 		name = "Square";
 	}
 };
 class Oval : public Rectangle {
 public:
 	virtual double Area();
-	Oval() {
+	Oval(const vector<coord>& newCoords) : Rectangle(newCoords) {
 		name = "Oval";
 	}
 	virtual ~Oval(){};
 };
 class Circle : public Oval {
 public:
-	Circle() {
+	Circle(const vector<coord>& newCoords) : Oval(newCoords) {
 		name = "Circle";
 	}
 	virtual double Area();
@@ -64,18 +69,17 @@ class Triangle : public Shape
 {	
 public:
 	virtual double Area();
-	Triangle() {
+	Triangle(const vector<coord>& newCoords) : Shape(newCoords) {
 		name = "Triangle";
 	}
 };
 class Cylinder{
 	public:
 	double h;
-	double receiveH();
 	double Volume(Shape*);
 	Cylinder(){
-		receiveH();
 	};
+
 };
 
 #endif

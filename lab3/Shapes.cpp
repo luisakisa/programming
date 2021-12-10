@@ -5,12 +5,9 @@
 #include <math.h>
 
 
-Shape::Shape() {
-		coords.push_back(coord(1,2));
-		coords.push_back(coord(4,2));
-		coords.push_back(coord(1,6));
-		coords.push_back(coord(4,6));
-	}
+Shape::Shape(const std::vector<coord>& newCoords) {
+	coords = newCoords;
+}
 void Shape::Move(double x, double y) {
 	for (unsigned int i = 0; i < coords.size(); i++) {
 		coords[i].x += x;
@@ -31,6 +28,15 @@ string Shape::toString() {
 void Shape::Draw() {
 	return;
 }
+
+vector<coord> Shape::getCoords() {
+	return coords;
+}
+
+coord Shape::getPosition() {
+	return coords[0];
+}
+
 double Rectangle::Area() {
 	return a * b;
 }
@@ -52,9 +58,5 @@ double Triangle::Area() {
 		- (coords[2].x - coords[0].x)*(coords[1].y - coords[0].y));
 }
 double Cylinder::Volume(Shape* s){
-	return s->Area()* h;
-}
-double Cylinder::receiveH(){
-	cout<< "Input h of cylinder: "; cin>> h;
-	return h;
+	return (h * s->Area());
 }
