@@ -29,9 +29,9 @@
         ""
       ],
       "stopAtEntry": false,
-      "cwd": "c:/Users/kisaluisa/Desktop/lab3",
+      "cwd": "c:/Users/kisaluisa/Desktop/lab4-5",
       "environment": [],
-      "program": "c:/Users/kisaluisa/Desktop/lab3/build/Debug/outDebug",
+      "program": "c:/Users/kisaluisa/Desktop/lab4-5/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gdb.exe",

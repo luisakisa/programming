@@ -3,18 +3,10 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include "Exc.h"
 
 using namespace std;
 
-class Exception{
-	private:
-		int number;
-		std::string message;
-	public:
-		Exception(int a, std::string b);
-		~Exception() {};
-		void show();
-};
 struct coord {
 		double x, y;
 		coord(double X, double Y){
@@ -88,6 +80,6 @@ double Volume(double h, T& s){
 	if (h > 0){
 		return (h * s.Area());
 	}
-	else throw Exception(1, "Negative number");
+	else throw Exception(1, "failed to calculate volume");
 }
 #endif
