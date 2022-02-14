@@ -63,10 +63,8 @@ class Circle extends Oval {
         return  (3.14)* a*a;
     }
 };
-
 class Triangle extends Rectangle
 {
-
     public double Area() {
         return 0.5 * a*b;
     }
