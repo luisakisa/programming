@@ -1,4 +1,4 @@
-package com.projectF.Figures;
+package com.projectF.geometry2d;
 
 public class Square extends Rectangle {
     public double Area() {

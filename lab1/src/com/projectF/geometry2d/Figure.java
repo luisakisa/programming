@@ -1,9 +1,9 @@
-package com.projectF.Figures;
+package com.projectF.geometry2d;
 
 public interface Figure {
     public double Area();
 
-    public String toString();
+    public String Show();
 
     public double volume();
 }

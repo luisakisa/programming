@@ -1,6 +1,6 @@
-package com.projectF.Cylinder;
+package com.projectF.geometry3d;
 
-import com.projectF.Figures.Figure;
+import com.projectF.geometry2d.Figure;
 
 public class Cylinder implements Figure {
     double v;
@@ -16,6 +16,10 @@ public class Cylinder implements Figure {
 
     public double Area() {
         return 0;
+    }
+
+    public String Show() {
+        return null;
     }
 
     public double volume() {

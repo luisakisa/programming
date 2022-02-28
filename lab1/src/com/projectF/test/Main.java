@@ -1,14 +1,8 @@
-package com.projectF;
-import com.projectF.Cylinder.Cylinder;
-import com.projectF.Figures.*;
+package com.projectF.test;
+import com.projectF.geometry3d.Cylinder;
+import com.projectF.geometry2d.*;
 
 import java.util.Scanner;
-
-;
-;
-;
-;
-;
 
 class Main {
     public static void main(String[] args)  {
@@ -21,7 +15,7 @@ class Main {
         Figure figures[] = { rectangle, triangle, square, oval, circle };
 
         for ( int i = 0; i < 5; i++) {
-            System.out.println(figures[i].toString()+"\n"+figures[i].Area() +"\n");
+            System.out.println(figures[i].Show()+"\n"+figures[i].Area() +"\n");
         }
         System.out.println("Введите высоту: ");
         try{
@@ -36,7 +30,7 @@ class Main {
         try {
             for (int i = 0; i < 5; i++) {
                 Figure cylinder = new Cylinder(figures[i].Area(), h);
-                System.out.println(figures[i].toString() + "\n" + figures[i].Area() + "\n");
+                System.out.println(figures[i].Show() + "\n" + figures[i].Area() + "\n");
             }
         }
         catch(Exception except)

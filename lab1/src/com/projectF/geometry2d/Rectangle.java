@@ -1,4 +1,4 @@
-package com.projectF.Figures;
+package com.projectF.geometry2d;
 
 
 public class Rectangle implements Figure {
@@ -11,7 +11,7 @@ public class Rectangle implements Figure {
 
     int[] coords = {1, 2, 4, 2, 1, 6, 4, 6};
 
-    public String toString() {
+    public String Show() {
         String a;
         a = "Name: " + name + "; ";
         for (int i = 0; i < 8; i += 2) {
