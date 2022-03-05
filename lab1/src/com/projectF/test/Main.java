@@ -28,8 +28,8 @@ class Main {
         }
         try {
             for (int i = 0; i < 5; i++) {
-                Figure cylinder = new Cylinder(figures[i], h);
-                System.out.println(figures[i].Show() + "\n" + figures[i].Area() + "\n");
+                Cylinder cylinder = new Cylinder(figures[i], h);
+                System.out.println(figures[i].Show() + "\n" + cylinder.volume() + "\n");
             }
         } catch (ExcNegative except) {
             System.out.println(except.getMessage());

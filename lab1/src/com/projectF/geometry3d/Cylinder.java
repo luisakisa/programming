@@ -7,8 +7,9 @@ public class Cylinder implements Figure {
     double v;
     double h;
 
-    public Cylinder(Figure f, double c) throws ExcNegative {
+    public Cylinder(Figure fi, double c) throws ExcNegative {
         h = c;
+        f = fi;
         if (h <= 0) throw new ExcNegative("Значение высоты должно быть больше 0");
     }
 
