@@ -1,8 +1,11 @@
 package com.projectF.geometry2d;
 
+import com.projectF.Exceptions.Exc;
+
 public class Circle extends Oval {
 
-    public Circle() {
+    public Circle() throws Exc {
+        super();
         name = "Circle";
     }
 

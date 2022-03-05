@@ -1,17 +1,15 @@
 package com.projectF.geometry3d;
-
+import com.projectF.Exceptions.*;
 import com.projectF.geometry2d.Figure;
 
 public class Cylinder implements Figure {
+    Figure f;
     double v;
-    double a;
     double h;
 
-    public Cylinder(double b, double c) throws Exception {
+    public Cylinder(Figure f, double c) throws ExcNegative {
         h = c;
-        if (h <= 0) throw new Exception();
-        a = b;
-
+        if (h <= 0) throw new ExcNegative("Значение высоты должно быть больше 0");
     }
 
     public double Area() {
@@ -23,7 +21,7 @@ public class Cylinder implements Figure {
     }
 
     public double volume() {
-        v = a * h;
+        v = f.Area() * h;
         return v;
     }
 }

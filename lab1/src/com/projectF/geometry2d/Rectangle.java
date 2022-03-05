@@ -1,4 +1,5 @@
 package com.projectF.geometry2d;
+import com.projectF.Exceptions.Exc;
 
 
 public class Rectangle implements Figure {
@@ -24,10 +25,11 @@ public class Rectangle implements Figure {
         return 0;
     }
 
-    public Rectangle() {
+    public Rectangle() throws Exc {
         a = coords[2] - coords[0];
         b = coords[5] - coords[1];
         name = "Rectangle";
+        if (a <= 0 || b<= 0) throw new Exc("Сторона отрицательна или равна 0");
     }
 
 }
