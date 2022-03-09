@@ -1,10 +1,19 @@
 #include "Server2.h"
+#include "Server.h"
 using namespace std;
 void Server2::Func(int c){
     cout<< a+b+c;
 }
-int Server2::QueryInterface(int Iid, void **ppv){
-    if(Iid == 2){
+HRESULT_ Server2::QueryInterface(IID_ Iid, void **ppv){
+   if(Iid == 0){
+        *ppv = (IUnknown*)((IY*)this);
+        return 0;
+    }
+    else if(Iid == 1){
+        *ppv = (IX*)this;
+        return 0;
+    }
+    else if(Iid == 2){
         *ppv = (IY*)this;
         return 0;
     }

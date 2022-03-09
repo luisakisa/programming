@@ -9,8 +9,8 @@ class Server2: public IX, public IY
     int a, b;
     public:
     Server2();
-    ~ Server2();
+    ~Server2();
     void Func(int c);
     void Func2();
-    int QueryInterface(int Iid, void **ppv);
+    HRESULT_ QueryInterface(IID_ Iid, void **ppv);
 };

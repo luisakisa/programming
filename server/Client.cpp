@@ -1,14 +1,16 @@
 #include "IX.h"
 #include "IY.h"
 #include <iostream>
+using namespace std;
+
 int main()
 {
-    IX* s = CreateInstance();
-    IY* s2 = NULL;
-    int res = s->QueryInterface(2, (void**)&s2);
-    if(res!=0){
-
+    IX* ppv;
+    HRESULT_ res = CreateInstance(1, 1, (void**)&ppv);
+    if(res != 0)
+    {
+        cout << "Error";
+        return 0;
     }
-    s2->Func2();
-    return 0;
+    ppv->Func(3);
 }
