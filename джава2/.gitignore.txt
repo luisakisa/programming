@@ -1,0 +1,6 @@
+# Ignore everything:
+*
+# Except for wordpress themes:
+!*/HelloApplication.java
+!*/HelloController.java
+!*/hello-view.fxml

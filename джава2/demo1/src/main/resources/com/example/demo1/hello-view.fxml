@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER_RIGHT" centerShape="false" fillWidth="false" minWidth="400.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="false" spacing="60.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <BorderPane prefHeight="200.0" prefWidth="354.0">
+      <center>
+          <Button  text="-&gt;" BorderPane.alignment="CENTER" onAction="#onHelloButtonClick" fx:id="btn" />
+      </center>
+      <right>
+         <TextField fx:id="text1" alignment="CENTER_RIGHT" maxWidth="-Infinity" minHeight="36.0" minWidth="40.0" prefHeight="36.0" prefWidth="149.0" text="Text" BorderPane.alignment="CENTER" />
+      </right>
+      <left>
+         <TextField fx:id="text2" maxWidth="-Infinity" prefHeight="36.0" prefWidth="156.0" BorderPane.alignment="CENTER" />
+      </left>
+   </BorderPane>
+</VBox>

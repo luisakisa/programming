@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="463.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exercise3.HelloController">
+   <children>
+      <CheckBox fx:id="c1" layoutX="100.0" layoutY="81.0" mnemonicParsing="false" text="Пицца 500р" />
+      <CheckBox fx:id="c2" layoutX="100.0" layoutY="117.0" mnemonicParsing="false" text="Кола    100р" />
+      <CheckBox fx:id="c3" layoutX="99.0" layoutY="156.0" mnemonicParsing="false" text="Роллы  900р" />
+      <CheckBox fx:id="c4" layoutX="99.0" layoutY="192.0" mnemonicParsing="false" text="Том ям 400р" />
+      <Label layoutX="205.0" layoutY="39.0" text="Меню" />
+      <TextField fx:id="quantity2" layoutX="222.0" layoutY="113.0" prefHeight="1.0" prefWidth="25.0" text="1" />
+      <Label layoutX="254.0" layoutY="117.0" text="шт." />
+      <TextField fx:id="quantity1" layoutX="222.0" layoutY="77.0" prefHeight="1.0" prefWidth="25.0" text="1" />
+      <Label layoutX="254.0" layoutY="81.0" text="шт." />
+      <TextField fx:id="quantity4" layoutX="222.0" layoutY="184.0" prefHeight="1.0" prefWidth="25.0" text="1" />
+      <Label layoutX="254.0" layoutY="188.0" text="шт." />
+      <TextField fx:id="quantity3" layoutX="222.0" layoutY="148.0" prefHeight="1.0" prefWidth="25.0" text="1" />
+      <Label layoutX="254.0" layoutY="152.0" text="шт." />
+      <Button fx:id="btn" layoutX="99.0" layoutY="234.0" mnemonicParsing="false" onAction="#onButtonClick" text="Заказать" />
+      <Label alignment="TOP_LEFT" layoutX="191.0" layoutY="296.0" prefHeight="33.0" prefWidth="63.0" text="Ваш заказ" />
+      <Label layoutX="93.0" layoutY="329.0" text="Пицца" />
+      <Label layoutX="96.0" layoutY="358.0" text="Кола" />
+      <Label layoutX="96.0" layoutY="387.0" text="Роллы" />
+      <Label layoutX="96.0" layoutY="414.0" text="Том ям" />
+      <Label fx:id="pricePizza" layoutX="208.0" layoutY="329.0" text="0р" />
+      <Label fx:id="priceCola" layoutX="208.0" layoutY="358.0" text="0р" />
+      <Label fx:id="priceRolls" layoutX="209.0" layoutY="385.0" text="0р" />
+      <Label fx:id="priceTom" layoutX="208.0" layoutY="413.0" text="0р" />
+      <Label layoutX="95.0" layoutY="448.0" text="Итого:" />
+      <Label fx:id="cheque" layoutX="207.0" layoutY="448.0" text="0р" />
+      <Line endX="100.0" layoutX="191.0" layoutY="440.0" startX="-100.0" />
+   </children>
+</Pane>

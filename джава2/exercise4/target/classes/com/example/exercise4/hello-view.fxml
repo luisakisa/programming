@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="312.0" style="-fx-background-color: ddd1ff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exercise4.HelloController">
+   <children>
+      <Pane fx:id="btn9" layoutX="56.0" layoutY="171.0" onMouseClicked="#onNumberClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="2.0" layoutY="-1.0" opacity="0.85" prefHeight="38.0" prefWidth="43.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="9" />
+         </children></Pane>
+      <Pane layoutX="55.0" layoutY="26.0" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: aaaaaa;">
+         <children>
+            <Pane layoutX="12.0" layoutY="15.0" prefHeight="89.0" prefWidth="180.0" style="-fx-background-color: fffddf;">
+               <children>
+                  <Label fx:id="lblResult" alignment="CENTER_RIGHT" disable="true" layoutX="6.0" layoutY="35.0" opacity="0.85" prefHeight="38.0" prefWidth="166.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="0.0" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="btn8" layoutX="109.0" layoutY="171.0" onMouseClicked="#onNumberClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-2.0" layoutY="-1.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="8" />
+         </children></Pane>
+      <Pane fx:id="btn7" layoutX="161.0" layoutY="171.0" onMouseClicked="#onNumberClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-2.0" layoutY="-1.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="7" />
+         </children></Pane>
+      <Pane fx:id="btnPlus" layoutX="213.0" layoutY="171.0" onMouseClicked="#onSymbolClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-2.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="+" />
+         </children></Pane>
+      <Pane fx:id="btn6" layoutX="56.0" layoutY="225.0" onMouseClicked="#onNumberClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-3.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="6" />
+         </children></Pane>
+      <Pane fx:id="btn5" layoutX="109.0" layoutY="225.0" onMouseClicked="#onNumberClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-3.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="5" />
+         </children></Pane>
+      <Pane fx:id="btn4" layoutX="161.0" layoutY="225.0" onMouseClicked="#onNumberClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-3.0" layoutY="-1.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="4" />
+         </children></Pane>
+      <Pane fx:id="btnMinus" layoutX="213.0" layoutY="225.0" onMouseClicked="#onSymbolClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-3.0" layoutY="-1.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="-" />
+         </children></Pane>
+      <Pane fx:id="btn3" layoutX="56.0" layoutY="276.0" onMouseClicked="#onNumberClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-4.0" layoutY="-1.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="3" />
+         </children></Pane>
+      <Pane fx:id="btn2" layoutX="109.0" layoutY="276.0" onMouseClicked="#onNumberClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-3.0" layoutY="-1.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="2" />
+         </children></Pane>
+      <Pane fx:id="btn1" layoutX="161.0" layoutY="276.0" onMouseClicked="#onNumberClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-3.0" layoutY="-1.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="1" />
+         </children></Pane>
+      <Pane fx:id="btnMultiply" layoutX="213.0" layoutY="276.0" onMouseClicked="#onSymbolClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-3.0" layoutY="7.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="*" />
+         </children></Pane>
+      <Pane fx:id="btnClear" layoutX="56.0" layoutY="325.0" onMouseClicked="#onSymbolClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-3.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="C" />
+         </children></Pane>
+      <Pane fx:id="btn0" layoutX="109.0" layoutY="325.0" onMouseClicked="#onNumberClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-3.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="0" />
+         </children></Pane>
+      <Pane fx:id="btnEquals" layoutX="161.0" layoutY="325.0" onMouseClicked="#onSymbolClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-3.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="=" />
+         </children></Pane>
+      <Pane fx:id="btnDivide" layoutX="213.0" layoutY="325.0" onMouseClicked="#onSymbolClicked" prefHeight="37.0" prefWidth="43.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label alignment="CENTER" disable="true" layoutX="-2.0" opacity="0.85" prefHeight="38.0" prefWidth="49.0" style="-fx-font-size: 30; -fx-font-family: Impact;" text="/" />
+         </children></Pane>
+   </children>
+</Pane>

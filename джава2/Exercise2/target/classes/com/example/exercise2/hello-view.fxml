@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/16"
+      fx:controller="com.example.exercise2.HelloController">
+   <children>
+      <CheckBox fx:id="check1" layoutX="330.0" layoutY="125.0" mnemonicParsing="false"  onAction="#click" text="CheckBox" />
+      <CheckBox fx:id="check2" layoutX="330.0" layoutY="192.0" mnemonicParsing="false" onAction="#click" text="CheckBox" />
+      <CheckBox fx:id="check3" layoutX="330.0" layoutY="255.0" mnemonicParsing="false" onAction="#click" text="CheckBox" />
+      <Button fx:id="btn" layoutX="194.0" layoutY="121.0" mnemonicParsing="false" text="Button" />
+      <Slider fx:id="sld" layoutX="135.0" layoutY="193.0" />
+      <TextField fx:id="tx" layoutX="131.0" layoutY="251.0" />
+   </children>
+</Pane>
