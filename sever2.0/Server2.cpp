@@ -1,30 +1,26 @@
+#include <iostream>
+
 #include "Server2.h"
 #include "Server.h"
 using namespace std;
 
-void Server2::Func(int c){
-    cout<< a+b+c;
-}
 HRESULT_ Server2::QueryInterface(IID_ Iid, void **ppv){
    if(Iid == 0){
-        *ppv = (IUnknown*)((IY*)this);
+        *ppv = (IUnknown*)((ITransposeAndPrintAnyMatrix*)this);
         return 0;
     }
     else if(Iid == 1){
-        *ppv = (IX*)this;
+        *ppv = (IEnterIntMatrix*)this;
         return 0;
     }
     else if(Iid == 2){
-        *ppv = (IY*)this;
+        *ppv = (ITransposeAndPrintAnyMatrix*)this;
         return 0;
     }
     else{
         *ppv= NULL;
         return 1;
     }
-}
-void Server2::Func2(){
-    cout<< a*b;
 }
 Server2::~Server2()
 {
@@ -41,8 +37,24 @@ ULONG_ Server2::Release(){
         delete this;
         cout<<"Pointers are deleted";
     }
-}   
-Server2::Server2()
-{
-    addRef();
-} 
+}
+
+void Server2::allocateMemoryForMatrix() {
+
+}
+
+void Server2::clearMemoryForMatrix() {
+
+}
+
+void Server2::enterMatrix(int n, int m) {
+
+}
+
+void Server2::transposeMatrix() {
+
+}
+
+void Server2::printMatrix() {
+
+}

@@ -1,21 +1,29 @@
 #pragma once
 #include <iostream>
-#include "IX.h"
-#include "IY.h"
+#include "IEnterIntMatrix.h"
+#include "ITransposeAndPrintAnyMatrix.h"
 
-class Server: public IX, public IY
+class Server: public IEnterIntMatrix, public ITransposeAndPrintAnyMatrix
 {
 private:
-    int a, b;
+    int n, m;
+    int **matr;
     int count = 0;
 public:
-    Server(/* args */);
     ~Server();
-    void Func(int c);
-    void Func2();
     HRESULT_ QueryInterface(IID_ Iid, void **ppv);
     ULONG_ addRef();
     ULONG_ Release();
+
+    virtual void allocateMemoryForMatrix();
+
+    virtual void clearMemoryForMatrix();
+
+    virtual void enterMatrix(int n, int m);
+
+    virtual void transposeMatrix();
+
+    virtual void printMatrix();
 };
 
 
