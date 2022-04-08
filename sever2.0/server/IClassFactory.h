@@ -15,7 +15,6 @@ public:
 
     IClassFactory_(CLSID_ server) : s(server)
     {
-        addRef();
     }
    ~IClassFactory_()
 {
