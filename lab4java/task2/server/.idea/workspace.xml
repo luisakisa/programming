@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9fd25e2f-d340-4902-a759-33beb2cdd8fa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../lab3java/lab3_2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../sever2.0/.idea/sever2.0.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../sever2.0/compile.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../../../sever2.0/compile.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../sever2.0/server/Functions.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../sever2.0/server/Functions.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../sever2.0/server/IClassFactory.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../sever2.0/server/IEnterIntMatrix.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../sever2.0/server/ITransposeAndPrintAnyMatrix.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../sever2.0/server/IUnknown.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../sever2.0/server/Server.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../sever2.0/server/Server.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../sever2.0/server/Server2.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../sever2.0/server/Server2.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../джава2/demo1/.idea/workspace.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27uYqE01rz4V2UWD38QHeOXndMU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Server" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\programming\programming\lab4java\task1\server\Server" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Net" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.company.Net" />
+      <module name="server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9fd25e2f-d340-4902-a759-33beb2cdd8fa" name="Changes" comment="" />
+      <created>1650171639257</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650171639257</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

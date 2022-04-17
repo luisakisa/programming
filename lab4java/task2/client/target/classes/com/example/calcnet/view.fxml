@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calcnet.Controller">
+    <children>
+        <Label layoutX="69.0" layoutY="14.0" prefHeight="25.0" prefWidth="163.0" text="   Вы проиграли:(">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+        <Button fx:id="send" layoutX="113.0" layoutY="148.0" mnemonicParsing="false" onAction="#send_to" text="Отправить" />
+        <TextField fx:id="in_match" layoutX="125.0" layoutY="113.0" prefWidth="50.0" />
+        <Label fx:id="current_status" layoutX="48.0" layoutY="70.0" prefHeight="32.0" prefWidth="229.0">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+        <Label fx:id="match" alignment="CENTER" contentDisplay="CENTER" layoutX="137.0" layoutY="41.0" prefHeight="25.0" prefWidth="28.0" text="0">
+
+        </Label>
+    </children>
+</Pane>

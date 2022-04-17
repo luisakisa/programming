@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="428.0" prefWidth="254.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="com.example.calcnet.Controller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <TextField fx:id="txtf1" layoutX="90" layoutY="28.0" />
+    <TextField fx:id="txtf2" layoutX="250" layoutY="28.0" />
+
+    <Button fx:id="btn_plus" layoutX="90" layoutY="60" onAction="#click_plus" text="+" />
+    <Button fx:id="btn_minus" layoutX="120" layoutY="60" onAction="#click_minus" text="-" />
+    <Button fx:id="btn_mult" layoutX="150" layoutY="60" onAction="#click_mult" text="x" />
+    <Button fx:id="btn_div" layoutX="180" layoutY="60" onAction="#click_div" text="/" />
+    <Button fx:id="btn_pow" layoutX="210" layoutY="60" onAction="#click_pow" text="^" />
+    <Label fx:id="labe" layoutX="250" layoutY="60" text="Result" />
+</VBox>
