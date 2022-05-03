@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IClassFactory.h"
+#include "../server/IClassFactory.h"
 
 class ClientWrapper
 {

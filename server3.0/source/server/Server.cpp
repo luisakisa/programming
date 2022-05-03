@@ -1,9 +1,13 @@
 #include <iostream>
 #include <iomanip>
 #include "Server.h"
-
+#include <windows.h>
+#include <fstream>
+#include <sstream>
 using namespace std;
 
+int components_count = 0;
+char buffer[2048];
 Server::~Server()
 {
     clearMemoryForMatrix();
@@ -93,3 +97,105 @@ void Server::printMatrix() {
         std::cout << std::endl;
     }
 };
+int DelModulePath()
+{
+    ifstream file_in("manager/wheredll.txt");
+    if (!file_in)
+    {
+        return -1;
+    }
+    CLSID_ fileCLS_ID;
+    string s;
+    string filedata = "";
+
+    while (getline(file_in, s))
+    {
+        istringstream is(s, istringstream::in);
+        is >> fileCLS_ID;
+        if (fileCLS_ID != clsidServ)
+        {
+            filedata += s + "\n";
+        }
+    }
+    file_in.close();
+    ofstream file_out("D:\\programming\\programming\\server3.0\\source\\manager\\pathToDLL.txt");
+    if (!file_out)
+    {
+        return -1;
+    }
+    file_out << filedata;
+    file_out.close();
+
+    return 0;
+}
+int SetModulePath()
+{
+    DelModulePath();
+    ofstream file("D:\\programming\\programming\\server3.0\\source\\manager\\manager/pathToDLL.txt", ios_base::app);
+    if (!file)
+    {
+        return -1;
+    }
+    file << clsidServ << " " << buffer;
+    file.close();
+    return 0;
+}
+extern "C" STDAPI __declspec(dllexport) DllRegisterServer()
+{
+    if (SetModulePath() == 0)
+    {
+        return S_OK;
+    }
+    else
+    {
+        return S_FALSE;
+    }
+}
+extern "C" STDAPI __declspec(dllexport) DllUnregisterServer()
+{
+    if (DelModulePath() == 0)
+    {
+        return S_OK;
+    }
+    else
+    {
+        return S_FALSE;
+    }
+}
+extern "C" STDAPI __declspec(dllexport) DllCanUnloadNow()
+{
+    if (components_count == 0)
+    {
+        return S_OK;
+    }
+    else
+    {
+        return S_FALSE;
+    }
+}
+
+BOOL APIENTRY DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
+{
+    GetModuleFileName(hinstDLL, buffer, sizeof(buffer));
+    std::cout << buffer << std::endl;
+    switch (fdwReason)
+    {
+    case DLL_PROCESS_ATTACH:
+        // attach to process
+        // return FALSE to fail DLL load
+        break;
+
+    case DLL_PROCESS_DETACH:
+        // detach from process
+        break;
+
+    case DLL_THREAD_ATTACH:
+        // attach to thread
+        break;
+
+    case DLL_THREAD_DETACH:
+        // detach from thread
+        break;
+    }
+    return TRUE; // succesful
+}

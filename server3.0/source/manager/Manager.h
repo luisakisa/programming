@@ -1,3 +1,3 @@
 #include "../server/Server.h"
 
-extern "C" H_RESULT __declspec(dllexport) Co_CreateInstance(CLS_ID clsid, I_ID iid, void** ppv);
+extern "C" HRESULT_ __declspec(dllexport) Co_CreateInstance(CLSID_ clsid, IID_ iid, void** ppv);

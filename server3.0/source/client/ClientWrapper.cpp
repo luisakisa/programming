@@ -1,5 +1,5 @@
 #include "ClientWrapper.h"
-#include "Functions.h"
+#include "../server/Functions.h"
 
 #include <iostream>
 
@@ -10,9 +10,7 @@
     ITransposeAndPrintAnyMatrix - 2
     IClassFactory - 3
 */
-CLSID_ Server = 1;
-IID_ IClassFactory = 3;
-const int  S_OK = 0;
+
 
 ClientWrapper::ClientWrapper() {
     pF = NULL;
