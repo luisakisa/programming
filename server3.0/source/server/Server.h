@@ -25,5 +25,3 @@ public:
 
     virtual void printMatrix();
 };
-
-

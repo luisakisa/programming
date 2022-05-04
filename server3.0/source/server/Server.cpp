@@ -3,30 +3,6 @@
 #include "Server.h"
 
 using namespace std;
- 
-Server::Server{
-    FunctionType f;
-    HINSTANCE h;
-    h = LoadLibrary("C++/Server.dll");
-    if (!h)
-    {
-        std::cout << "no dll" << std::endl;
-    }
-
-    f = (FunctionType)GetProcAddress(h, "GetClassObject");
-    if (!f)
-    {
-        std::cout << "no dll func" << std::endl;
-    }
-    
-    f(clsidServ, iid_IClassFactory, (void **)&fact);
-
-    fact->CreateInstance(iid_IEnter, (void **)&enterMatr);
-
-    enterMatr->QueryInterface(iid_ITandP, (void **)&TandP);
-
-    system("pause");
-}
 
 Server::~Server()
 {
