@@ -1,2 +1,1 @@
-g++ build/ClientWrapper.o build/Client.o
-pause
+g++ build/ClientWrapper.o build/Client.o -o client.exe

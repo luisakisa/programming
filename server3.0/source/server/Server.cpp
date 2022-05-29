@@ -15,7 +15,7 @@ Server::~Server()
 }
 HRESULT_ Server::QueryInterface(IID_ Iid, void **ppv){
     if(Iid == 0){
-        *ppv = (IUnknown*)((IEnterIntMatrix*)this);
+        *ppv = (IUnknown_*)((IEnterIntMatrix*)this);
         return 0;
     }
     else if(Iid == 1){
@@ -112,7 +112,7 @@ int DelModulePath()
     {
         istringstream is(s, istringstream::in);
         is >> fileCLS_ID;
-        if (fileCLS_ID != clsidServ)
+        if (fileCLS_ID != CLS_ID_SERV)
         {
             filedata += s + "\n";
         }
@@ -136,7 +136,7 @@ int SetModulePath()
     {
         return -1;
     }
-    file << clsidServ << " " << buffer;
+    file << CLS_ID_SERV << " " << buffer;
     file.close();
     return 0;
 }

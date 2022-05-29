@@ -4,12 +4,10 @@
 #include <sstream>
 #include "Manager.h"
 #include "../server/Functions.h"
+#include "../server/IClassFactory.h"
 
 typedef HRESULT_ (*FunctionType)(CLSID_, IID_, void **);
 HINSTANCE h;
-CLSID_ Server = 1;
-IID_ IClassFactory = 3;
-const int  S_OK = 0;
 
 int GetModulePath(std::string &path, CLSID_ clsid)
 {
@@ -60,8 +58,8 @@ HRESULT_ Co_GetClassObject(CLSID_ clsid, IID_ IClassFactory, void **ppv)
 extern "C" HRESULT_ __declspec(dllexport) Co_CreateInstance(CLSID_ clsid, IID_ iid, void **ppv)
 {
     IClassFactory_ *pIFact = NULL;
-    Co_GetClassObject(clsid, IClassFactory, (void **)&pIFact);
-    pIFact->CreateInstance(Server, ppv);
+    Co_GetClassObject(clsid, ICLASS_FACTORY, (void **)&pIFact);
+    pIFact->CreateInstance(SERVER, ppv);
     pIFact->Release();
 }
 STDAPI __declspec(dllexport) DllCanUnloadNow()

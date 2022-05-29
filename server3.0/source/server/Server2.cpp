@@ -6,7 +6,7 @@ using namespace std;
 
 HRESULT_ Server2::QueryInterface(IID_ Iid, void **ppv){
    if(Iid == 0){
-        *ppv = (IUnknown*)((ITransposeAndPrintAnyMatrix*)this);
+        *ppv = (IUnknown_*)((ITransposeAndPrintAnyMatrix*)this);
         return 0;
     }
     else if(Iid == 1){

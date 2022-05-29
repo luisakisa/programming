@@ -1,6 +1,10 @@
 #pragma once
 
+#include <cstddef>
+
 #include "../server/IClassFactory.h"
+#include "../server/IEnterIntMatrix.h"
+#include "../server/ITransposeAndPrintAnyMatrix.h"
 
 class ClientWrapper
 {

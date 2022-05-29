@@ -14,9 +14,9 @@
 
 ClientWrapper::ClientWrapper() {
     pF = NULL;
-    HRESULT_ res = GetClassObject(Server, IClassFactory, (void**)&pF);
+    HRESULT_ res = GetClassObject(SERVER, ICLASS_FACTORY, (void**)&pF);
     pF->addRef();
-    if (res == S_OK) {
+    if (res == S_OK_) {
         HRESULT_ res = pF->CreateInstance(1, (void**)&pX);
         pX->addRef();
         HRESULT_ res2 = pX->QueryInterface(2, (void**)&pY);
@@ -65,7 +65,7 @@ ClientWrapper& ClientWrapper::operator=(const ClientWrapper &other)
     if (this->pF)
     {
         this->pF->Release();
-        GetClassObject(Server, IClassFactory, (void **)&pF);
+        GetClassObject(SERVER, ICLASS_FACTORY, (void **)&pF);
         pF->addRef();
     }
     if (this->pX)

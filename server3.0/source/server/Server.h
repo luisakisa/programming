@@ -15,13 +15,13 @@ public:
     ULONG_ addRef();
     ULONG_ Release();
 
-    virtual void allocateMemoryForMatrix();
+    void allocateMemoryForMatrix();
 
-    virtual void clearMemoryForMatrix();
+    void clearMemoryForMatrix();
 
-    virtual void enterMatrix(int n, int m);
+    void enterMatrix(int n, int m);
 
-    virtual void transposeMatrix();
+    void transposeMatrix();
 
-    virtual void printMatrix();
+    void printMatrix();
 };
