@@ -1,10 +1,7 @@
 #include "ClientWrapper.h"
-#include <windows.h>
 #include <iostream>
 
 using namespace std;
-
-typedef double (*FunctionType) (double,double);
 
 int main()
 {

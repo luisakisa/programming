@@ -9,11 +9,11 @@ HRESULT_ Server2::QueryInterface(IID_ Iid, void **ppv){
         *ppv = (IUnknown_*)((ITransposeAndPrintAnyMatrix*)this);
         return 0;
     }
-    else if(Iid == 1){
+    else if(Iid == ENTER_MATRIX_IID){
         *ppv = (IEnterIntMatrix*)this;
         return 0;
     }
-    else if(Iid == 2){
+    else if(Iid == TRANSPOSE_MATRIX_IID){
         *ppv = (ITransposeAndPrintAnyMatrix*)this;
         return 0;
     }

@@ -8,6 +8,8 @@ using namespace std;
 
 int components_count = 0;
 char buffer[2048];
+const char* PATH_TO_DLL = "./pathToDLL.txt";
+
 Server::~Server()
 {
     clearMemoryForMatrix();
@@ -18,11 +20,11 @@ HRESULT_ Server::QueryInterface(IID_ Iid, void **ppv){
         *ppv = (IUnknown_*)((IEnterIntMatrix*)this);
         return 0;
     }
-    else if(Iid == 1){
+    else if(Iid == ENTER_MATRIX_IID){
         *ppv = (IEnterIntMatrix*)this;
         return 0;
     }
-    else if(Iid == 2){
+    else if(Iid == TRANSPOSE_MATRIX_IID){
         *ppv = (ITransposeAndPrintAnyMatrix*)this;
         return 0;
     }
@@ -99,7 +101,7 @@ void Server::printMatrix() {
 };
 int DelModulePath()
 {
-    ifstream file_in("manager/wheredll.txt");
+    ifstream file_in(PATH_TO_DLL);
     if (!file_in)
     {
         return -1;
@@ -112,13 +114,13 @@ int DelModulePath()
     {
         istringstream is(s, istringstream::in);
         is >> fileCLS_ID;
-        if (fileCLS_ID != CLS_ID_SERV)
+        if (fileCLS_ID != SERVER1_CLSID)
         {
             filedata += s + "\n";
         }
     }
     file_in.close();
-    ofstream file_out("D:\\programming\\programming\\server3.0\\source\\manager\\pathToDLL.txt");
+    ofstream file_out(PATH_TO_DLL);
     if (!file_out)
     {
         return -1;
@@ -131,12 +133,12 @@ int DelModulePath()
 int SetModulePath()
 {
     DelModulePath();
-    ofstream file("D:\\programming\\programming\\server3.0\\source\\manager\\manager/pathToDLL.txt", ios_base::app);
+    ofstream file(PATH_TO_DLL, ios_base::app);
     if (!file)
     {
         return -1;
     }
-    file << CLS_ID_SERV << " " << buffer;
+    file << SERVER1_CLSID << " " << buffer;
     file.close();
     return 0;
 }

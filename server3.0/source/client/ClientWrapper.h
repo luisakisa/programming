@@ -2,16 +2,17 @@
 
 #include <cstddef>
 
-#include "../server/IClassFactory.h"
 #include "../server/IEnterIntMatrix.h"
 #include "../server/ITransposeAndPrintAnyMatrix.h"
+
+typedef HRESULT_ (*CreateInstanceFunction)(CLSID_, IID_, void **);
 
 class ClientWrapper
 {
 private:
-    IClassFactory_* pF = NULL;
     IEnterIntMatrix* pX = NULL;
     ITransposeAndPrintAnyMatrix* pY = NULL;
+    CreateInstanceFunction coCreateInstanceFunction;
 
 public:
     ClientWrapper();

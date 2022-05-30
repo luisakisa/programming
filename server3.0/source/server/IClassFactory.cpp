@@ -14,18 +14,18 @@ Factory::~Factory()
 }
 
 HRESULT_ Factory::CreateInstance(IID_ iid, void** ppv){
-    if (s == 1){
-        if (iid == 1){
+    if (s == SERVER1_CLSID){
+        if (iid == ENTER_MATRIX_IID){
             *ppv = (IEnterIntMatrix*)(new Server());
             return 0;
         }
     }
-    else if (s == 2){
-        if (iid == 1){
+    else if (s == SERVER2_CLSID){
+        if (iid == ENTER_MATRIX_IID){
             *ppv = (IEnterIntMatrix*)(new Server2());
             return 0;
         }
-        else if (iid == 2){
+        else if (iid == TRANSPOSE_MATRIX_IID){
             *ppv = (ITransposeAndPrintAnyMatrix*)(new Server2());
             return 0;
         }

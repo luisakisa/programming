@@ -7,7 +7,7 @@ using namespace std;
 class IClassFactory_ : public IUnknown_
 {
 public:
-    virtual HRESULT_ CreateInstance(IID_ iid, void** ppv);
+    virtual HRESULT_ CreateInstance(IID_ iid, void** ppv) = 0;
     virtual ~IClassFactory_() {}
 };
 

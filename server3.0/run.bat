@@ -14,7 +14,7 @@ g++ -c ./source/manager/Manager.cpp         -o ./build/Manager.o
 
 
 
-g++ -shared ./build/Server.o -o ./build/Server.dll
+g++ -shared ./build/Server.o ./build/Server2.o ./build/Functions.o ./build/IClassFactory.o -o ./build/Server.dll
 g++ -shared ./build/Manager.o -o ./build/Manager.dll
 
 regsvr32 ./build/Server.dll

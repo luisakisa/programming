@@ -1,6 +1,8 @@
 #include "ClientWrapper.h"
 #include "../server/Functions.h"
 
+#include "windows.h"
+
 #include <iostream>
 
 /**
@@ -11,27 +13,31 @@
     IClassFactory - 3
 */
 
-
 ClientWrapper::ClientWrapper() {
-    pF = NULL;
-    HRESULT_ res = GetClassObject(SERVER, ICLASS_FACTORY, (void**)&pF);
-    pF->addRef();
-    if (res == S_OK_) {
-        HRESULT_ res = pF->CreateInstance(1, (void**)&pX);
-        pX->addRef();
-        HRESULT_ res2 = pX->QueryInterface(2, (void**)&pY);
-        pY->addRef();
+    HINSTANCE h = LoadLibrary("build/Manager.dll");
+    if (!h)
+    {
+        std::cout << "dll not found" << std::endl;
     }
+
+    coCreateInstanceFunction = (CreateInstanceFunction)GetProcAddress(h, "Co_CreateInstance");
+    if (!coCreateInstanceFunction)
+    {
+        std::cout << "Co_CreateInstance on dll" << std::endl;
+    }
+    coCreateInstanceFunction(SERVER1_CLSID, ENTER_MATRIX_IID, (void **)&pX);
+
+    pX->QueryInterface(TRANSPOSE_MATRIX_IID, (void **)&pY);
 }
 
 ClientWrapper::~ClientWrapper() {
     pX->Release();
     pY->Release();
-    pF->Release();
 }
 
 void ClientWrapper::enterMatrix() {
 
+    std::cout << "enter matrix dimentions (N x M):";
     int n;
     int m;
     std::cin >> n;
@@ -48,37 +54,27 @@ void ClientWrapper::transposeAndPrintMatrix() {
 
 ClientWrapper::ClientWrapper(const ClientWrapper &other)
 {
-
-    pF = other.pF;
-    pF->addRef();
     pX = other.pX;
     pX->addRef();
     pY = other.pY;
     pY->addRef();
 }
-ClientWrapper& ClientWrapper::operator=(const ClientWrapper &other)
-{
+ClientWrapper& ClientWrapper::operator=(const ClientWrapper &other) {
     if (this == &other)
     {
         return *this;
     }
-    if (this->pF)
-    {
-        this->pF->Release();
-        GetClassObject(SERVER, ICLASS_FACTORY, (void **)&pF);
-        pF->addRef();
-    }
-    if (this->pX)
-    {
-        this->pX->Release();
-        pF->CreateInstance(1, (void **)&pX);
-        pX->addRef();
-    }
-    if (this->pY)
-    {
-        this->pY->Release();
-        pF->CreateInstance(2, (void **)&pY);
-        pY->addRef();
+    if (coCreateInstanceFunction) {
+        if (this->pX) {
+            this->pX->Release();
+            coCreateInstanceFunction(SERVER1_CLSID, ICLASS_FACTORY_IID, (void **)&pX);
+            pX->addRef();
+        }
+        if (this->pY) {
+            this->pY->Release();
+            coCreateInstanceFunction(SERVER2_CLSID, ICLASS_FACTORY_IID, (void **)&pY);
+            pY->addRef();
+        }
     }
     return *this;
 }
