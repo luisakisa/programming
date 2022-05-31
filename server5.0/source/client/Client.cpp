@@ -8,7 +8,7 @@ int main()
     try {
 
         cout << "started" << endl;
-        ClientWrapper client1;
+        ClientWrapper client1(RunType::ManagerEmulator, false);
         cout << "client1 created" << endl;
         ClientWrapper client2 = client1;
         cout << "client2 created" << endl;
@@ -18,7 +18,9 @@ int main()
         client2.transposeAndPrintMatrix();
 
     } catch (exception e) {
-        cout << e.what() << endl;
+        cout << "main::Exception" << e.what() << endl;
+    } catch (...) {
+        cout << "main::Unknown exception" << endl;
     }
 
     return 0;	

@@ -1,6 +1,5 @@
 #pragma once
 
 #include "../server/IClassFactory.h"
-#include "../server/IUnknown.h"
 
-extern "C" HRESULT_ __declspec(dllexport) Co_CreateInstance(CLSID_ clsid, IID_ iid, void** ppv);
+extern "C" __declspec(dllexport) HRESULT GetClassObject(const CLSID& clsid, const IID& iid, void** ppv);

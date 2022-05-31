@@ -1,4 +1,5 @@
 #pragma once
-#include "IUnknown.h"
 
-extern "C" HRESULT_ __declspec(dllexport) DLL_GetClassObject(CLSID_ S, IID_ I,void** pF);
+#include "windows.h"
+
+HRESULT __stdcall GetClassObject(const CLSID& clsid, const IID& iid, void** ppv);

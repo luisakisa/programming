@@ -1,17 +1,26 @@
 #include "Functions.h"
 
-#include "IUnknown.h"
+#include "Variables.h"
 #include "IClassFactory.h"
+
+#include <iostream>
 
 /*
     1 аргумент - ид сервера (1 или 2)
     2 аргумент - ид фабрики (3)
     3 аргумент - указатель на фабрику, которая конструируется в этой функции
 */
-HRESULT_ DLL_GetClassObject(CLSID_ S, IID_ I, void** pF) {
-    if (I == ICLASS_FACTORY_IID) {
-        *pF = new Factory(S);
-        return 0;
-    } else {return 1;}
+HRESULT __stdcall GetClassObject(const CLSID& clsid, const IID& iid, void** ppv) {
+    std::cout << "GetClassObject" << std::endl;
+    
+    if (clsid == CLSID_Server1 || clsid == CLSID_Server2) {
+        IClassFactory* factory = new Factory(clsid);
+        return factory->QueryInterface(iid, ppv);
+    }
+    else
+    {
+        *ppv = NULL;
+        return E_NOTIMPL;
+    }
     
 }

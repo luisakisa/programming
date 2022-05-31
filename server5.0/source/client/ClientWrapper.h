@@ -5,20 +5,31 @@
 #include "../server/IEnterIntMatrix.h"
 #include "../server/ITransposeAndPrintAnyMatrix.h"
 
-typedef HRESULT_ (*CreateInstanceFunction)(CLSID_, IID_, void **);
+typedef HRESULT __stdcall (*GetClassObjectType) (const CLSID& clsid, const IID& iid, void** ppv);
+
+enum RunType {
+    ManagerEmulator,
+    ComLibraryFactory,
+    ComLibraryInstance
+};
 
 class ClientWrapper
 {
 private:
     IEnterIntMatrix* pX = NULL;
     ITransposeAndPrintAnyMatrix* pY = NULL;
-    CreateInstanceFunction coCreateInstanceFunction;
+    IClassFactory* pF = NULL;
+    GetClassObjectType getClassObjectTypeFunction;
 
+    ClientWrapper() = delete;
+    CLSID clsidServer;
 public:
-    ClientWrapper();
+    ClientWrapper(RunType runType, bool getClsidFromRegistr);
     ClientWrapper(const ClientWrapper &other);
+    
     ~ClientWrapper();
     void enterMatrix();
     void transposeAndPrintMatrix();
+    void dispatch();
     ClientWrapper& operator= (const ClientWrapper& other);
 };

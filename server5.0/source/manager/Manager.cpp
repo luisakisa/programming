@@ -1,70 +1,61 @@
 #include <iostream>
 #include <windows.h>
-#include <fstream>
-#include <sstream>
 #include "Manager.h"
-#include "../server/Functions.h"
-#include "../server/IClassFactory.h"
 
-typedef HRESULT_ (*FunctionType)(CLSID_, IID_, void **);
-HINSTANCE h;
+typedef HRESULT __stdcall (*DllGetClassObjectType)(const CLSID &clsid, const IID &iid, void **ppv);
 
-const char* PATH_TO_DLL = "./pathToDLL.txt";
-
-int GetModulePath(std::string &path, CLSID_ clsid)
+extern "C" __declspec(dllexport) HRESULT GetClassObject(const CLSID &clsid, const IID &iid, void **ppv)
 {
-    std::fstream file(PATH_TO_DLL);
-    if (!file)
-    {
-        return -1;
-    }
-    std::string s;
-    CLSID_ fileCLS_ID;
+    printf("Manager::GetClassObject\n");
 
-    while (getline(file, s))
+    try
     {
-        std::istringstream is(s, std::istringstream::in);
-        is >> fileCLS_ID;
-        if (fileCLS_ID == clsid)
+        DllGetClassObjectType DllGetClassObject;
+
+        HINSTANCE h;
+
+        h = LoadLibrary("./build/Server.dll");
+
+        if (!h)
         {
-            is >> path;
-            break;
+            throw "";
         }
+
+        DllGetClassObject = (DllGetClassObjectType)GetProcAddress(h, "DllGetClassObject");
+
+        if (!DllGetClassObject)
+        {
+            std::cout << "DllGetClassObject not found" << std::endl;
+            throw "";
+        }
+        return DllGetClassObject(clsid, iid, ppv);
     }
-    file.close();
-    return 0;
-}
-
-HRESULT_ Co_GetClassObject(CLSID_ clsid, IID_ IClassFactory, void **ppv)
-{
-    FunctionType GetClassObject_;
-    std::string path;
-    GetModulePath(path, clsid);
-    std::cout<<path<<std::endl;
-    std::wstring stemp = std::wstring(path.begin(), path.end());
-    LPCWSTR lpcPath = stemp.c_str();
-
-    h = LoadLibraryW(lpcPath);
-    if (!h)
+    catch (...)
     {
-        std::cout << "no dll" << std::endl;
+        return E_UNEXPECTED;
     }
-    GetClassObject_ = (FunctionType)GetProcAddress(h, "DLL_GetClassObject");
-    if (!GetClassObject_)
-    {
-        std::cout << "no dll func" << std::endl;
-    }
-    GetClassObject_(clsid, IClassFactory, ppv);
 }
 
-extern "C" HRESULT_ __declspec(dllexport) Co_CreateInstance(CLSID_ serverClsid, IID_ clientIid, void **ppv)
+BOOL APIENTRY DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 {
-    IClassFactory_ *pIFact = NULL;
-    Co_GetClassObject(serverClsid, ICLASS_FACTORY_IID, (void **)&pIFact);
-    pIFact->CreateInstance(clientIid, ppv);
-    pIFact->Release();
-}
-STDAPI __declspec(dllexport) DllCanUnloadNow()
-{
-    return FreeLibrary(h);
+    switch (fdwReason)
+    {
+    case DLL_PROCESS_ATTACH:
+        // attach to process
+        // return FALSE to fail DLL load
+        break;
+
+    case DLL_PROCESS_DETACH:
+        // detach from process
+        break;
+
+    case DLL_THREAD_ATTACH:
+        // attach to thread
+        break;
+
+    case DLL_THREAD_DETACH:
+        // detach from thread
+        break;
+    }
+    return TRUE; // succesful
 }
