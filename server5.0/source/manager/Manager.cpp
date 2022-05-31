@@ -2,6 +2,8 @@
 #include <windows.h>
 #include "Manager.h"
 
+using namespace std;
+
 typedef HRESULT __stdcall (*DllGetClassObjectType)(const CLSID &clsid, const IID &iid, void **ppv);
 
 extern "C" __declspec(dllexport) HRESULT GetClassObject(const CLSID &clsid, const IID &iid, void **ppv)
@@ -18,7 +20,7 @@ extern "C" __declspec(dllexport) HRESULT GetClassObject(const CLSID &clsid, cons
 
         if (!h)
         {
-            throw "";
+            throw "Server.dll not found";
         }
 
         DllGetClassObject = (DllGetClassObjectType)GetProcAddress(h, "DllGetClassObject");
@@ -26,12 +28,18 @@ extern "C" __declspec(dllexport) HRESULT GetClassObject(const CLSID &clsid, cons
         if (!DllGetClassObject)
         {
             std::cout << "DllGetClassObject not found" << std::endl;
-            throw "";
+            throw "cant load DllGetClassObject from Server.dll";
         }
         return DllGetClassObject(clsid, iid, ppv);
     }
+    catch (const char* ex)
+    {
+        cout << "manager::exception: " << ex << endl;
+        return E_UNEXPECTED;
+    }
     catch (...)
     {
+        cout << "manager::exception unknounw error" << endl;
         return E_UNEXPECTED;
     }
 }

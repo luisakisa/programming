@@ -20,4 +20,4 @@ g++ -c ./source/server/main.cpp             -o ./build/mainServer.o
 g++ -shared ./build/Server.o ./build/Server2.o ./build/Functions.o ./build/IClassFactory.o ./build/Variables.o ./build/mainServer.o -o ./build/Server.dll -lole32 -loleaut32 -luser32
 
 
-@REM regsvr32 ./build/Server.dll
+regsvr32 D:\\projects\\kisaluisa\\programming\\server5.0\\build\\Server.dll

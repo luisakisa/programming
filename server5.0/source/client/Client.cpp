@@ -8,7 +8,7 @@ int main()
     try {
 
         cout << "started" << endl;
-        ClientWrapper client1(RunType::ManagerEmulator, false);
+        ClientWrapper client1(RunType::ComLibraryFactory, true);
         cout << "client1 created" << endl;
         ClientWrapper client2 = client1;
         cout << "client2 created" << endl;

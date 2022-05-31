@@ -33,3 +33,17 @@ BOOL APIENTRY DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
     }
     return TRUE; // succesful
 }
+
+STDAPI __declspec(dllexport) DllRegisterServer()
+{
+    return S_OK;
+}
+STDAPI __declspec(dllexport) DllUnregisterServer()
+{
+    
+    return S_OK;
+}
+STDAPI __declspec(dllexport) DllCanUnloadNow()
+{
+    return S_OK;
+}

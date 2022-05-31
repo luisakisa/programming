@@ -3,6 +3,7 @@
 
 #include <windows.h>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -47,6 +48,14 @@ ClientWrapper::ClientWrapper(RunType runType, bool getClsidFromRegistr) {
             else
             {
                 cout << "CLSID form ProgID OK!" << endl;
+                if(clsidServer == CLSID_Server1)
+                {
+                    cout << "got server1 CLSID from registry" << endl;
+                }
+                else if(clsidServer == CLSID_Server2)
+                {
+                    cout << "got server2 CLSID from registry" << endl;
+                }
             }
         }
         else
@@ -58,7 +67,7 @@ ClientWrapper::ClientWrapper(RunType runType, bool getClsidFromRegistr) {
         {
             HRESULT factoryCreationResult;
 
-            if(runType == RunType::ManagerEmulator)
+            if (runType == RunType::ManagerEmulator)
             {
                 HINSTANCE h = LoadLibrary("./build/Manager.dll");
                 if (!h)
@@ -87,8 +96,7 @@ ClientWrapper::ClientWrapper(RunType runType, bool getClsidFromRegistr) {
 
             if (!(SUCCEEDED(factoryCreationResult)))
             {
-                //printf("%X\n",(unsigned int)resFactory);
-                throw "No factoty";
+                throw "Factory getting error: " + std::to_string(factoryCreationResult);
             }
         }
 
@@ -105,7 +113,7 @@ ClientWrapper::ClientWrapper(RunType runType, bool getClsidFromRegistr) {
 
         if (!(SUCCEEDED(instanceCreationResult)))
         {
-            throw "Instance creation error";
+            throw "Instance creation error " + std::to_string(instanceCreationResult);
         }
 
 
@@ -119,6 +127,10 @@ ClientWrapper::ClientWrapper(RunType runType, bool getClsidFromRegistr) {
     catch(const std::exception& ex)
     {
         std::cout << "ClientWrapper::Exception: " << ex.what() << endl;
+    }
+    catch (const std::string& ex)
+    {
+        std::cout << "ClientWrapper::Exception: " << ex << endl;
     }
     catch (const char* ex)
     {
