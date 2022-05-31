@@ -1,0 +1,1 @@
+g++ build/ClientWrapper.o build/Client.o -o client.exe
