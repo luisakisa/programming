@@ -4,16 +4,16 @@
 #include <sstream>
 #include "Manager.h"
 #include "../server/Functions.h"
+#include "../server/IClassFactory.h"
 
 typedef HRESULT_ (*FunctionType)(CLSID_, IID_, void **);
 HINSTANCE h;
-CLSID_ Server = 1;
-IID_ IClassFactory = 3;
-const int  S_OK = 0;
+
+const char* PATH_TO_DLL = "./pathToDLL.txt";
 
 int GetModulePath(std::string &path, CLSID_ clsid)
 {
-    std::fstream file("D:\\programming\\programming\\server3.0\\source\\manager\\pathToDLL.txt");
+    std::fstream file(PATH_TO_DLL);
     if (!file)
     {
         return -1;
@@ -49,7 +49,7 @@ HRESULT_ Co_GetClassObject(CLSID_ clsid, IID_ IClassFactory, void **ppv)
     {
         std::cout << "no dll" << std::endl;
     }
-    GetClassObject_ = (FunctionType)GetProcAddress(h, "GetClassObject");
+    GetClassObject_ = (FunctionType)GetProcAddress(h, "DLL_GetClassObject");
     if (!GetClassObject_)
     {
         std::cout << "no dll func" << std::endl;
@@ -57,11 +57,11 @@ HRESULT_ Co_GetClassObject(CLSID_ clsid, IID_ IClassFactory, void **ppv)
     GetClassObject_(clsid, IClassFactory, ppv);
 }
 
-extern "C" HRESULT_ __declspec(dllexport) Co_CreateInstance(CLSID_ clsid, IID_ iid, void **ppv)
+extern "C" HRESULT_ __declspec(dllexport) Co_CreateInstance(CLSID_ serverClsid, IID_ clientIid, void **ppv)
 {
     IClassFactory_ *pIFact = NULL;
-    Co_GetClassObject(clsid, IClassFactory, (void **)&pIFact);
-    pIFact->CreateInstance(Server, ppv);
+    Co_GetClassObject(serverClsid, ICLASS_FACTORY_IID, (void **)&pIFact);
+    pIFact->CreateInstance(clientIid, ppv);
     pIFact->Release();
 }
 STDAPI __declspec(dllexport) DllCanUnloadNow()
