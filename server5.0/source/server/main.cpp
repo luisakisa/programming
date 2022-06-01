@@ -3,7 +3,7 @@
 
 #include "Functions.h"
 
-extern "C" __declspec(dllexport) HRESULT __stdcall DllGetClassObject(const CLSID& clsid, const IID& iid, void** ppv)
+STDAPI __declspec(dllexport) DllGetClassObject(const CLSID& clsid, const IID& iid, void** ppv)
 {
     std::cout << "DllGetClassObject" << std::endl;
     return GetClassObject(clsid, iid, ppv);
