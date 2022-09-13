@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Line?>
+
+<?import javafx.scene.image.ImageView?>
+<GridPane stylesheets="@../Style.css" xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.company.view.game.GameController" fx:id="gridPane">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
+        <Button text="Продолжить" GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="Infinity" visible="false"
+                fx:id="menuContinueBtn" onAction="#clickMenuContinueBtn"/>
+        <Button text="Выход" GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="Infinity" visible="false"
+                fx:id="menuExitBtn" onAction="#clickMenuExitBtn"/>
+        <Pane fx:id="pane" onMouseMoved="#mouseMove" onMouseEntered="#mouseEnter">
+            <ProgressBar fx:id="progressBar" progress="0.44" maxWidth="150" maxHeight="35" minWidth="150" minHeight="35"/>
+            <Button fx:id="btn" onKeyPressed="#btnOnKeyPressed" focusTraversable="true" onKeyReleased="#btnOnKeyReleased"
+                    style="-fx-background-color: #9990;"/>
+        </Pane>
+    </children>
+</GridPane>

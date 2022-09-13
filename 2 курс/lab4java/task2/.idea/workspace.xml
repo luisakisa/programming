@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b1057693-e3a2-49c8-bcb9-a929662dc832" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../task1/client/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../task1/client/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/client/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/../task1/client/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task1/server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task1/server/Server/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task1/server/Server/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sever2.0/compile.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../../sever2.0/compile.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sever2.0/server/Functions.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sever2.0/server/Functions.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sever2.0/server/IEnterIntMatrix.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sever2.0/server/ITransposeAndPrintAnyMatrix.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sever2.0/server/IUnknown.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sever2.0/server/Server.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sever2.0/server/Server.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sever2.0/server/Server2.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sever2.0/server/Server2.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../джава2/demo1/.idea/workspace.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="28n3BvCNdL3YWa9FLoY4qpKwac4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../task1/client" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b1057693-e3a2-49c8-bcb9-a929662dc832" name="Changes" comment="" />
+      <created>1651838391139</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651838391139</updated>
+    </task>
+    <servers />
+  </component>
+</project>

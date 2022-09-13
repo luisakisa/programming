@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.company.view.option.OptionController"
+          stylesheets="@../Style.css">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
+        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES"/>
+                <ColumnConstraints hgrow="SOMETIMES"/>
+            </columnConstraints>
+            <children>
+                <Label text="Громкость" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Slider GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
+                <Label text="Пошаговая отрисовка" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Button text="Сменить" GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="changeRenderingBtn"/>
+                <Label text="Отрисовка пересечением отрезков" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            </children>
+        </GridPane>
+        <Button text="Назад" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                fx:id="backBtn" onAction="#clickBackBtn"/>
+    </children>
+</GridPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.company.view.main.MainController"
+          stylesheets="@../Style.css">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
+        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <columnConstraints><ColumnConstraints hgrow="SOMETIMES"/></columnConstraints>
+            <children>
+                <Button maxWidth="Infinity" text="Одиночная игра" GridPane.rowIndex="0"
+                        fx:id="startBtn" onAction="#clickStartBtn"/>
+                <Button maxWidth="Infinity" text="Подключиться к серверу" GridPane.rowIndex="1"
+                        fx:id="onlineBtn" onAction="#clickStartOnlineBtn"/>
+                <Button maxWidth="Infinity" text="Выход" GridPane.rowIndex="3"
+                        fx:id="exitBtn" onAction="#clickExitBtn"/>
+            </children>
+        </GridPane>
+    </children>
+</GridPane>
