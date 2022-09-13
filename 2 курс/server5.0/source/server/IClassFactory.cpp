@@ -6,11 +6,14 @@
 
 using namespace std;
 
-Factory::Factory(CLSID server) : s(server) {}
+Factory::Factory(CLSID server) : s(server)
+{
+    cout << "Factory::constructor" << endl;
+}
 
 Factory::~Factory()
 {
-    cout << "Factory is deleted" << endl;
+    cout << "Factory::destructor" << endl;
 }
 
 HRESULT __stdcall Factory::CreateInstance(IUnknown *pUnknownOuter, const IID &iid, void **ppv)
