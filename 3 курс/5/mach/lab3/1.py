@@ -1,0 +1,8 @@
+import pandas as pd
+s = pd.Series([1,2,3,4,5], index=['a','b','c','d', 'e'])
+print(s['d'])
+print(s[1])
+s['f']=6
+print(s)
+print(s[2:5])
+d = pd.DataFrame([[1, 2], [5, 3], [3.7, 4.8]] )
