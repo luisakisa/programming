@@ -1,0 +1,131 @@
+$base-spacing-unit: 24px;
+$half-spacing-unit: $base-spacing-unit / 2;
+$color-alpha: #1772FF;
+$color-form-highlight: #EEEEEE;
+body {
+    background-color: #f5f5f5;
+    background-image: url("https://media.giphy.com/media/3tUfkryMLxbvbpGtGN/giphy.gif");
+    background-size: cover;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+@font-face {
+    font-family: Comfortaa;
+    src: local("Comfortaa"), local("Comfortaa"), url(Comfortaa.ttf);
+}
+
+.container {
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+table {
+    width: 100%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+}
+
+.table-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.table-content .table-row:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+tr {
+    color: #5e2eaa;
+    background-color: #bc9cff;
+    border-radius: 4px;
+}
+
+input[type=button] {
+    color: #ffffff;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    margin-left: 29px;
+    padding-left: 29px;
+    padding-right: 29px;
+    border: none;
+    background: #e6b3ec;
+    border-radius: 20px;
+}
+
+.table-header {
+    color: white;
+    display: flex;
+    width: 300px;
+    background: #95c09c;
+    padding: ($half-spacing-unit * 1.5) 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: ($half-spacing-unit * 1.5) 30px;
+    &:nth-of-type(odd) {
+        background: $color-form-highlight;
+    }
+    background-color:#EEEEEE;
+    &:hover {
+        background-color: #bbd8c0;
+    }
+}
+
+.header__item {
+    flex: 1 1 20%;
+    text-align: center;
+}
+
+.header__item {
+    text-transform: uppercase;
+}
+
+.filter__link {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    padding-left: $base-spacing-unit;
+    padding-right: $base-spacing-unit;
+    &::after {
+        content: '';
+        position: absolute;
+        right: -($half-spacing-unit * 1.5);
+        color: white;
+        font-size: $half-spacing-unit;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    &.desc::after {
+        content: '(desc)';
+    }
+    &.asc::after {
+        content: '(asc)';
+    }
+}
