@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./components/head.ejs') %>
+  <%- include('./components/header.ejs') %>
+
+<body>
+    <div>
+      <script>
+        function add() {
+          let json = {
+            ticket:document.getElementById("ticket").value,
+            copyId:document.getElementById("copyId").value,
+            startDate: document.getElementById("startDate").value,
+            endDate: document.getElementById("endDate").value
+        }
+          fetch('/giveBook', {
+                  method: "POST",
+                  headers: { 'Content-Type': "application/json;charset=UTF-8" },
+                  body: JSON.stringify(json)
+              }).then(()=>{let root = document.querySelector('div');
+              root.innerHTML = `<h1>Успешно</h1>`})
+      }
+      </script>
+      <label>Номер читательского билета
+        <input type="text" id="ticket">
+      </label>
+      <label>Идентификатор экземпляра
+        <input type="text" id="copyId">
+      </label>
+      <label>Дата выдачи: 
+        <input type="date" id="startDate">
+      </label>
+      <label>Выдана до:
+        <input type="date" id="endDate">
+      </label>
+      <input type="button" value="Внести" onclick="add()">
+    </div>
+  </form>
+</body>
+</html>

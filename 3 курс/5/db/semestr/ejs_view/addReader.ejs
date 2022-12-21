@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./components/head.ejs') %>
+  <%- include('./components/header.ejs') %>
+
+<body>
+  <div>
+    <script>
+      function add() {
+        let json = {
+          name:document.getElementById("name").value,
+          lastname:document.getElementById("lastname").value,
+          faculty : document.getElementById("faculty").value,
+          group: document.getElementById("group").value,
+          startRegistration : document.getElementById("startRegistration").value,
+          endRegistration: document.getElementById("endRegistration").value
+      }
+        fetch('/addReader', {
+                method: "POST",
+                headers: { 'Content-Type': "application/json;charset=UTF-8" },
+                body: JSON.stringify(json)
+            }).then(()=>{let root = document.querySelector('div');
+            root.innerHTML = `<h1>Успешно</h1>`})
+    }
+    </script>
+  <h1>Добавить читателя студента:</h1>
+      <label>Имя
+        <input type="text" id="name">
+      </label><br><br>
+      <label>Фамилия
+        <input type="text" id="lastname">
+      </label><br><br>
+      <label>Факультет
+        <input type="text" id="faculty">
+      </label><br><br>
+      <label>Группа
+        <input type="text" id="group">
+      </label><br><br>
+      <label>Начало регистрации
+        <input type="date" id="startRegistration">
+      </label><br><br>
+      <label>Конец регистрации
+        <input type="date" id="endRegistration">
+      </label><br><br>
+      <input type="button" value="Добавить" onclick="add()">
+  <h1>Добавить читателя преподователя:</h1>
+      <label>Имя
+        <input type="text" id="name_t">
+      </label><br><br>
+      <label>Фамилия
+        <input type="text" id="lastname_t">
+      </label><br><br>
+      <label>Кафедра
+        <input type="text" id="department">
+      </label><br><br>
+      <label>Ученая степень
+        <input type="text" id="degree">
+      </label><br><br>
+      <label>Должность
+        <input type="text" id="position">
+      </label><br><br>
+      <label>Начало реигстрации
+        <input type="date" id="startRegistration_t">
+      </label><br><br>
+      <label>Конец регистрации
+        <input type="date" id="endRegistration_t">
+      </label><br><br>
+      <input type="button" value="Добавить" onclick="add()">>
+  <h1>Добавить читателя не имеющего отношения к вузу:</h1>
+    <label>Имя
+      <input type="text" id="name_a">
+    </label><br><br>
+    <label>Фамилия
+      <input type="text" id="lastname_a">
+    </label><br><br>
+    <label>Статус
+      <input type="text" id="status_a">
+    </label><br><br>
+    <label>Начало реигстрации
+      <input type="date" id="startRegistration_a">
+    </label><br><br>
+    <label>Конец регистрации
+      <input type="date" id="endRegistration_a">
+    </label><br><br>
+    <input type="button" value="Добавить" onclick="add()">>
+  </div>
+</body>
+</html>

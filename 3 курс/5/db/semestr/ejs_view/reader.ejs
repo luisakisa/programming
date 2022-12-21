@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./components/head.ejs') %>
+    <%- include('./components/header.ejs') %>
+  <body><div><script>
+    function del(){
+        fetch('/deletingReader', {
+          method: "POST",
+          body: document.getElementById('idForDelete').innerHTML
+      }).then(()=>{let root = document.querySelector('div');
+      root.innerHTML = `<h1>Успешно</h1>`})
+      }
+    </script>
+    <h2 style="text-align: center;">
+        Читатель:
+      </h2>
+      <article>
+        <br>
+          <span><span style="color:hsla(270, 30%, 18%, 0.541)">Имя: </span><%= reader[0].name %></span><br>
+          <span><span style="color:hsla(272, 30%, 18%, 0.541)">Фамилия: </span><%= reader[0].lastname %></span><br>
+          <span><span style="color:hsla(272, 30%, 18%, 0.541)">Номер билета: </span><div id = 'idForDelete'><%= reader[0].ticket %></div></span><br>
+          <span><span style="color:hsla(272, 30%, 18%, 0.541)">Категория: </span><%= reader[0].status %></span><br><br>
+          <span><span style="color:hsla(272, 30%, 18%, 0.541)">Дата Регистрации: </span><%= reader[0].startRegistration %></span><br>
+          <span><span  style="color:hsla(272, 30%, 18%, 0.541)">Дата Окончания Регистрации: </span><%= reader[0].endRegistration %></span>
+        <%  if(reader[0].department != null) { %>
+            <span><span style="color:hsla(272, 30%, 18%, 0.541)">Кафедра: </span><%= reader[0].department %></span><br>
+          <% } %>
+        <%  if(reader[0].degree != null) { %>
+            <span><span style="color:hsla(272, 30%, 18%, 0.541)">Степень: </span><%= reader[0].degree %></span><br>
+          <% } %>
+        <%  if(reader[0].position != null) { %>
+            <span><span style="color:hsla(272, 30%, 18%, 0.541)">Должность: </span><%= reader[0].position %></span><br>
+          <% } %>
+          <input type="button" value="Удалить" onclick="del()">
+      </article>
+
+  <h2 style="text-align: center;">
+    Выдачи:
+  </h2>
+
+
+        <% if(reader[0].books != null ){reader.forEach(({books, bookData}) => { %>
+          <li>
+            <article>
+              <div class="info">
+                <span><span style="color:hsla(272, 30%, 18%, 0.541)">ID экземпляра: </span><%= bookData[0]._id %></span><br>
+                <span><span style="color:hsla(272, 30%, 18%, 0.541)">Название: </span><%= bookData[0].name %></span><br>
+                <span><span style="color:hsla(272, 30%, 18%, 0.541)">Автор: </span><%= bookData[0].author %></span><br>
+              </div>
+             
+              <span><span style="color:hsla(272, 30%, 18%, 0.541)">Дата сдачи: </span>
+                <%= books.endDate || 'No date' %>
+            </span><br>
+              <span><span style="color:hsla(272, 30%, 18%, 0.541)">Дата выдачи: </span><%= books.startDate || 'No date' %></span><br>
+                <span><span style="color:hsla(272, 30%, 18%, 0.541)">Статус: </span><%= books.status %></span><br>
+            </article>
+          </li>
+          <% }) %>
+          <% } %>
+
+        </div>
+  </body>
+
+</html>

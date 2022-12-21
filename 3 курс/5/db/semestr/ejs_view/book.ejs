@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./components/head.ejs') %>
+  <%- include('./components/header.ejs') %>
+
+  <body>
+    <div><script>
+  function del(){
+    fetch('/deleting', {
+      method: "POST",
+      body: document.getElementById('idForDelete').innerHTML
+  }).then(()=>{let root = document.querySelector('div');
+  root.innerHTML = `<h1>Успешно</h1>`})
+  }
+</script>
+    <h2 style="text-align: center;">
+      Книга:
+    </h2>
+      <article>
+          <span><span style="color: gray;">Имя: </span><%= book[0].name %></span><br>
+          <span><span style="color: gray;" >ID: </span><div id = "idForDelete"><%= book[0]._id %></div></span><br>
+            <span><span style="color: gray;">Автор: </span><%= book[0].author %></span><br>
+            <input type="button" value="Удалить" onclick="del()">
+      </article>
+
+  <h2 style="text-align: center;">
+    Экземпляры:
+  </h2>
+        <% book.forEach(({ copys}) => { %>
+          <li>
+            <article>
+                <span><span style="color: gray;">ID экземпляра: </span><%=copys. _id %></span><br>
+                <span><span style="color: gray;">Год выпуска: </span><%= copys.created_at %></span><br>
+                <span><span style="color: gray;">Дата поступления: </span><%= copys.date || 'No date' %></span><br>
+                <span class="date_review"><span style="color: gray;">status: </span><%= copys.status %></span><br>
+                <span class="date_review"><span style="color: gray;">place: </span><%= copys.place %></span><br>
+           
+            </article>
+          </li>
+          <% }) %>
+
+      <!-- <script>
+        document.addEventListener('click', (e) => {
+          const id = e.target ?.dataset ?.id || null;
+          if (id) {
+            fetch(`/posts/${id}`, {
+              method: 'DELETE',
+            }).then(() => {
+              window.location.href = '/posts';
+            });
+          }
+        });
+      </script>
+      <script>
+        let el = body.getElementsByTagName("p")
+        for (let e of el){
+          if ( e.textContent == '' * 32 ) {
+            e.innerHTML = "Нет оценки";
+          }
+        }
+
+      </script> -->
+    </div>
+  </body>
+</html>

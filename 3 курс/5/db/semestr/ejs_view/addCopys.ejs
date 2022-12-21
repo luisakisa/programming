@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./components/head.ejs') %>
+  <%- include('./components/header.ejs') %>
+ 
+<body>
+  <div>
+    <script>
+      function add() {
+        let json = {
+          _id:document.getElementById("id").value,
+          createdAt : document.getElementById("createdAt").value,
+         date : document.getElementById("date").value,
+         place : document.getElementById("place").value,
+         count : document.getElementById("count").value
+      }
+        fetch('/addCopys', {
+                method: "POST",
+                headers: { 'Content-Type': "application/json;charset=UTF-8" },
+                body: JSON.stringify(json)
+            }).then(()=>{let root = document.querySelector('div');
+            root.innerHTML = `<h1>Успешно</h1>`})
+    }
+    </script>
+      <label>ID Книги:
+        <input type="text" id="id">
+      </label><br><br>
+      <label>Год выпуска
+        <input type="number" id="createdAt">
+      </label><br><br>
+      <label>Дата поступления
+        <input type="date" id="date">
+      </label><br><br>
+      <label>Место выдачи
+        <input type="text" id="place">
+      </label><br><br>
+      <label>Количество
+        <input type="number" id="count">
+      </label><br><br>
+      <input type="button" value="Добавить" onclick="add()"></div>>
+</body>
+</html>

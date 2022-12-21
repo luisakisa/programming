@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./components/head.ejs') %>
+  <%- include('./components/header.ejs') %>
+  <body>
+      <h1 style="text-align: center;">Список книг:</h1>
+        <% if (books.length) { %>
+          <% books.forEach(({ _id, name, author, copys }) => { %>
+            <li>
+              <article>
+                <h2>
+                  <a href="/books/<%= _id %>">
+                    <%= name %>
+                  </a>
+                </h2>
+                <p>
+                  <%= author %>
+                </p>
+                <div class="info" style="font-size: smaller;">
+                  <span><span style="color: gray;">Количество экземпляров: </span><%= copys.length %></span>
+                </div>
+              </article>
+            </li>
+            <% }) %>
+              <% } %>
+
+  </body>
+
+</html>

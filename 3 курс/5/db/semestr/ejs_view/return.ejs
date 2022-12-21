@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./components/head.ejs') %>
+<%- include('./components/header.ejs') %>
+<script>
+  function send() {
+    let copy_id = document.getElementById("copy_id").value
+    fetch('/return', {
+            method: "POST",
+            body: copy_id
+        }).then(()=>{let root = document.querySelector('label');
+        root.innerHTML = `<h1>Успешно</h1>`})
+}
+</script>
+<body>
+      <label>Введите ID экземпляра
+        <input type="text" name="copy_id" id="copy_id"?>      
+      <input type="button" value="Вернуть" onclick="send()"></label>
+     
+</body>
+</html>
