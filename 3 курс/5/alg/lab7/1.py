@@ -1,6 +1,4 @@
 from ppbtree import *
-
-
 class Stack:
     def __init__(self):
         self.items = []
@@ -63,7 +61,6 @@ def buildParseTree(fpexp):
     pStack.push(eTree)
     currentTree = eTree
     for i in fplist:
-        # print_tree(currentTree, nameattr='key', left_child='leftChild', right_child='rightChild')
         if i == '(':
             currentTree.insertLeft('')
             pStack.push(currentTree)
@@ -106,9 +103,24 @@ def evaluate(parseTree):
     else:
         return parseTree.getRootVal()
 
-# pt = buildParseTree("( ( 10 + 5 ) * 3 )")
-pt = buildParseTree("( ! ( True & False ) )")
-# pt = buildParseTree("( True & ! ( True & False ) )")
-print_tree(pt, nameattr='key', left_child='leftChild', right_child='rightChild')
+def printexp(tree):
+    leftC = tree.getLeftChild()
+    rightC = tree.getRightChild()
 
+    if leftC and not rightC:
+        printexp(leftC)
+        print(tree.getRootVal())
+    if leftC and rightC:
+        print("(", end=' ')
+        printexp(leftC)
+        print(tree.getRootVal(), end=' ')
+        printexp(rightC)
+        print(")", end=' ')
+    else:
+        print(tree.getRootVal(), end=' ')
+
+
+
+pt = buildParseTree("( True & ( True | False ) )")
 print(evaluate(pt))
+printexp(pt)
