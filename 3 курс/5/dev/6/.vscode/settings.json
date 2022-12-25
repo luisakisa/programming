@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "d:\\glassfish6\\glassfish\\lib\\javaee.jar",
+        "c:\\Users\\rfnzt\\Downloads\\postgresql-42.5.0.jar"
+    ]
+}
