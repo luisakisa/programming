@@ -1,11 +1,11 @@
-export function _delete(method, URL) {
+export function del(method, URL) {
     fetch(URL, { method: method });
 }
-export function _put(method, URL) {
+export function put(method, URL) {
     fetch(URL, { method: method });
 }
 
-export function _post(method, URL, header, object) {
+export function post(method, URL, header, object) {
     return fetch(URL, {
         method: method,
         headers: { 'Content-Type': header },

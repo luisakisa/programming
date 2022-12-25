@@ -1,4 +1,4 @@
-import { _delete as del, _post as post, _put as put } from "../transport/xhr.js";
+import { del, post, put } from "../transport/xhr.js";
 
 class Product {
     constructor(id, name, parametrs, total) {
@@ -22,17 +22,18 @@ class Product {
     }
 }
 
-export function _async_getProducts(object) {
+export function async_getProducts(object) {
     return new Promise((resolve) => {
         post("POST", "api/products", "text/plain;charset=UTF-8", object)
             .then((response) => response.json())
             .then((data) => {
+                console.log(data)
                 resolve(_response(data));
             });
     });
 }
 
-export function _async_getBasket(object) {
+export function async_getBasket(object) {
     return new Promise((resolve) => {
         post("POST", "api/basket", "text/plain;charset=UTF-8", object)
             .then((response) => response.json())
@@ -42,7 +43,7 @@ export function _async_getBasket(object) {
     });
 }
 
-export function _async_login(object) {
+export function async_login(object) {
     return new Promise((resolve) => {
         post("POST", "api/login", "application/json;charset=UTF-8", object)
             .then(response => {
@@ -51,13 +52,13 @@ export function _async_login(object) {
     });
 }
 
-export function _addProductToBasket(id) {
+export function addProductToBasket(id) {
     URL = "api/adding/" + id;
     put("PUT", URL);
 
 }
 
-export function _delProduct(id) {
+export function delProduct(id) {
     URL = "api/deleting/" + id;
     del("DELETE", URL);
 }
